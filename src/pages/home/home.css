@@ -1,0 +1,10 @@
+body{
+    background-color: rgba(186, 185, 185, 0.519);
+}
+.home-container
+{
+ width: 100%;
+ height: 800px;
+ padding: 0px;
+ margin: 0px;
+}

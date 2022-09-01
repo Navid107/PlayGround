@@ -1,0 +1,38 @@
+.nevbar {
+    background-color: rgb(176, 190, 240);
+    width: 50%;
+    height: 50px;
+    border-radius: 0 0 100px 100px;
+    margin: auto;
+    padding: 0 1rem;
+    align-items: stretch;
+    
+}
+.nev-ul {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    list-style-type: none;
+    margin: 0;
+    padding: 15px 30px 15px 30px; 
+    text-align: center;
+}
+li {
+    padding: auto;
+    font-display: bold;
+    width: auto;
+    line-height: auto;
+}
+li a{
+    text-decoration: none;
+    color: rgb(8, 8, 8);
+    
+}
+.nev-ul li.active{
+    background-color: rgba(253, 255, 254, 0.499);
+}
+.nev-ul li:hover{
+    background-color: rgb(254, 254, 254);
+    padding: 1px;
+}
+

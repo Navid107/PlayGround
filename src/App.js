@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import Nevbar from './component/nevbar/Nevbar';
+import Home from './pages/home/Home';
+import Calculator from './pages/calc/Calculator';
+import Weather from './pages/weather/Weather';
+import About from './pages/about/About';
+import {Route, Routes} from "react-router-dom";
+import Header from './component/header/Header';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Header />
+      <Nevbar />
+      <div className="App">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="calculator" element={<Calculator />} />
+        <Route path="weather" element={<Weather />} />
+        <Route path="about" element={<About />} />
+      </Routes>
+      </div>
+    </>
   );
 }
 
