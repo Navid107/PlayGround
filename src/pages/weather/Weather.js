@@ -1,38 +1,81 @@
-import React,{useState, useRef} from 'react'
+import React, { useState } from "react";
+import Clouds from "../../img/cloudy.jpg";
+import Rainy from "../../img/rainy.jpg";
+import Windy from "../../img/windy.jpg";
+import Sunny from "../../img/clear.jpg";
+import "./weather.css";
 
+const apiURL = {
+  base: "https://api.openweathermap.org/data/2.5/",
+  key: "439a30799a27449e2bf30f4645198568",
+};
 
 function Weather() {
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const inputRef = useRef([]);
+  const [input, setInput] = useState("");
+  const [weather, setWeather] = useState({});
 
-  inputRef.current = [city,state].map(
-    (ref, index) => inputRef.current[index] = React.createRef()
-  )
-  const handleClick = (e, index) => {
-    inputRef.current[index].current.select();
-    document.execCommand("copy");
+  const todaysDate = (d) => {
+    let date = d.getDate();
+    let month = d.getMonth() + 1;
+    let year = d.getFullYear();
+    return `Today Date: ${month}/ ${date}/ ${year}`;
+  };
+  const search = (event) => {
+    if (event.key === "Enter") {
+      fetch(`${apiURL.base}weather?q=${input}&units=metric&APPID=${apiURL.key}`)
+        .then((res) => res.json())
+        .then((result) => {
+          setInput("");
+          setWeather(result);
+          console.log(result);
+        });
+    }
+  };
+  const tempKind = () => {
+    let weat = weather.weather[0].main;
+    if (weat === "Clouds") {
+      return (document.body.background = Clouds);
+    } else if (weat === "Rain") {
+      return (document.body.background = Rainy);
+    } else if (weat === "Windy") {
+      return (document.body.background = Windy);
+    } else if (weat === "Clear") {
+      return (document.body.background = Sunny);
+    }
+  };
+  const convertToFahrenheit = () => {
+    let fahr = (Math.round(weather.main.temp) * 9) / 5 + 32;
+    return fahr;
   };
   return (
-    <div>
-      <h1>If you want to know the weather in your location </h1>
-        <h2>In your City and State</h2>
+    <div className="main-container">
+      <h1 className="title">Weather</h1>
+      <div className="date">{todaysDate(new Date())}</div>
+      <div className="input-container">
         <input
-        ref={inputRef.current[setCity]}
-        type="text"
-        placeholder='City'
-        value={setCity}
+          type="text"
+          className="input"
+          placeholder="Search for weather"
+          onChange={(e) => setInput(e.target.value)}
+          value={input}
+          onKeyPress={search}
         />
-        <input
-        ref={inputRef.current[setState]}
-        type="text"
-        placeholder="State"
-        value={setState}
-        />
-         <button onClick={handleClick} className="btn-yes">submit</button>
-         <h1>{city} {state}</h1>
       </div>
-  )
+      {typeof weather.main != "undefined" ? (
+        <div>
+          <div className="output">
+            {tempKind().background}
+            <div className="location">
+              {weather.name},{weather.sys.country}
+            </div>
+            <div>{convertToFahrenheit()}</div>
+            <div className="temp-kind">{weather.weather[0].main}</div>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+    </div>
+  );
 }
-
-export default Weather
+export default Weather;
