@@ -4,7 +4,6 @@ import './home.css';
 function Home() {
   const inputRef = useRef(null);
   const [name, setName] = useState('');
-
   function handleClick(){
     setName(inputRef.current.value);
   }

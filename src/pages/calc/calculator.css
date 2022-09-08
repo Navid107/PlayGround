@@ -1,0 +1,68 @@
+.title h1{
+    color: rgb(212, 117, 1);
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: black 3px 1px;
+}
+.calculator {
+    color: rgb(252, 252, 248);
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;  
+}
+.calc-container{
+width: 100%;
+max-width: 500px;
+background-color: aliceblue;
+border-radius: 16px;
+overflow: hidden;
+box-shadow: 0px 2px 64px rgb(252, 5, 186);
+}
+.display{
+    padding: 16px;
+    text-align: right;
+    background-color: rgb(0, 0, 0);
+    font-size: 40px;
+    font-weight: 300;
+}
+.display span{
+    font-size: 25px;
+    color: rgb(248, 245, 41);
+}
+button{
+    appearance: none;
+    outline: none;
+    color: aliceblue;
+    font-size: 40px;
+    padding: 30px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+button:hover{
+opacity: 0.9;
+}
+.btn-operator{
+    display: flex;
+}
+.btn-operator button{
+    flex: 1 1 0%;
+    background-color: rgb(163, 15, 15);
+    font-weight: 700;
+    border: none;
+}
+.btn{
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 1px white;
+}
+.btn button{
+    flex: 1 1 33.333%;
+    max-width: 33.333%;
+    background-color: cornflowerblue;
+    
+}
