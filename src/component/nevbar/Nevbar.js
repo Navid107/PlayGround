@@ -10,7 +10,7 @@ const Nevbar = () => {
                 <CustomLink to="/">Home</CustomLink>
                 <CustomLink to="/calculator">Calculator</CustomLink>
                 <CustomLink to="/weather">Weather</CustomLink>
-                <CustomLink to="about">About US</CustomLink>
+                <CustomLink to="about">Store</CustomLink>
             </ul>
         </div>
     )

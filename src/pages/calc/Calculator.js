@@ -38,6 +38,7 @@ function Calculator() {
   };
   const finalResult = () => {
     setNumber(eval(number).toString());
+    setResult(0)
   };
   return (
     <div className="title">
