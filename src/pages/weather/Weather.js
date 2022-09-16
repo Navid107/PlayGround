@@ -34,13 +34,13 @@ function Weather() {
   const tempKind = () => {
     let weat = weather.weather[0].main;
     if (weat === "Clouds") {
-      return (document.body.background = Clouds);
+      return Clouds;
     } else if (weat === "Rain") {
-      return (document.body.background = Rainy);
+      return Rainy;
     } else if (weat === "Windy") {
-      return (document.body.background = Windy);
+      return Windy;
     } else if (weat === "Clear") {
-      return (document.body.background = Sunny);
+      return Sunny;
     }
   };
   const convertToFahrenheit = () => {
@@ -63,8 +63,11 @@ function Weather() {
       </div>
       {typeof weather.main != "undefined" ? (
         <div>
-          <div className="output">
-            {tempKind().background}
+          <div className="output" style={{background: `url(${tempKind()})`,
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat'
+            }}>
+            
             <div className="location">
               {weather.name},{weather.sys.country}
             </div>
