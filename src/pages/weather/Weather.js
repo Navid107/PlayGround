@@ -66,8 +66,7 @@ function Weather() {
           <div className="output" style={{background: `url(${tempKind()})`,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat'
-            }}>
-            
+            }}>            
             <div className="location">
               {weather.name},{weather.sys.country}
             </div>
